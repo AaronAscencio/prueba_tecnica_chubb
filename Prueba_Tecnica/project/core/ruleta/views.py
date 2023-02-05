@@ -76,7 +76,7 @@ class RuletaCloseView(View):
                     apuesta.cantidad = apuesta.cantidad * 5
                     apuesta.save()
                 else:
-                    data[apuesta.usuario] = -apuesta.cantidad
+                    data[apuesta.usuario] = - apuesta.cantidad
             apuestas = Apuesta.objects.filter(ruleta = ruleta,color__isnull=False)
             for apuesta in apuestas:
                 if (numero_ganador % 2 == 0 and apuesta.color == 'rojo') or (numero_ganador % 2 != 0 and apuesta.color == 'negro'):
@@ -84,7 +84,7 @@ class RuletaCloseView(View):
                     apuesta.cantidad = apuesta.cantidad * 1.8
                     apuesta.save()
                 else:
-                    apuesta[apuesta.usuario] = -apuesta.cantidad
+                    apuesta[apuesta.usuario] = - apuesta.cantidad
         except Ruleta.DoesNotExist:
             data['error'] = 'No existe una ruleta con ese id'
         except Exception as e:
